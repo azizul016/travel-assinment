@@ -4,7 +4,6 @@ import star from '../../Image/Icon/star_1_.png';
 import './About.css'
 
 const About = (props) => {
-    // console.log(props);
     const {name, cost, rattingNumber, description, comfort, bed, bedrooms, bathrooms, image, guests, ratting} = props.room
     return (
         <Container>
@@ -28,7 +27,6 @@ const About = (props) => {
                 </div>
              </div>
          </div>
-
         </Container>
     );
 };

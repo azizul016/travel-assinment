@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { details } from '../../App';
+import travel from '../../fakeData/travel';
 import News from '../News/News';
 
 const Home = () => {
-   const [data, setData] = useContext(details)
+//    const [data, setData] = useContext(details)
+   const [data, setData] =  useState(travel)
     return (
         <Container>
             <div className="row mt-5">

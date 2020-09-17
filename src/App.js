@@ -12,17 +12,20 @@ import NotFound from './component/NotFound/NotFound';
 import Booking from './component/Booking/Booking';
 import travel from './fakeData/travel';
 import BookingDetails from './component/BookingDetails/BookingDetails';
+import LogIn from './component/LogIn/LogIn';
+import PrivateRoute from './component/PrivateRoute/PrivateRoute';
 
 
 
-export const details = createContext()
+export const UserContext = createContext()
 
 function App() {
-  const [data, setData] = useState(travel)
+  const [logedInUser, setLoggedInUser] = useState(travel)
   return (
     <div className='app'>
-    <details.Provider value={[data, setData]}>
+    <UserContext.Provider value={[logedInUser, setLoggedInUser]}>
       <Router>
+      <h3>email{logedInUser.email}</h3>
       <Header></Header>
         <Switch>
           <Route path="/home">
@@ -31,8 +34,11 @@ function App() {
           <Route path="/booking/:bookingId">
             <Booking />
           </Route>
-          <Route path="/about/:id">
+          <PrivateRoute path="/about/:id">
             <BookingDetails />
+          </PrivateRoute>
+          <Route path="/login">
+            <LogIn />
           </Route>
           <Route exact path="/">
             <Home />
@@ -42,7 +48,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </details.Provider>
+    </UserContext.Provider>
     </div>
 
   );
