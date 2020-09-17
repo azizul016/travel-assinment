@@ -1,13 +1,19 @@
-import React  from 'react';
+import React, { useState }  from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import travel from '../../fakeData/travel';
 import './Booking.css'
 
 const Booking = (props) => {
     const {bookingId} = useParams();
     const place = travel.find(pd => pd.id === parseInt(bookingId))
+    const history = useHistory()
+    const [form, setForm] = useState('')
+    const handleAdd = () => {
+     form && history.push("/about/" + place.userId)
+    }
 
+        
     return (
         <Container>
             <div className="row">
@@ -16,12 +22,12 @@ const Booking = (props) => {
                     <p>{place.description}</p>
                 </div>
                 <div className="col-md-6">
-                    <form className="formBg" action="">
+                    <form className="formBg">
                         <Form.Label>Origin</Form.Label>
-                        <Form.Control required type="text" />
+                        <Form.Control value={form} onChange={(e)=> setForm(e.target.value)} required type="text" />
                         <br/>
                         <Form.Label>Destination</Form.Label>
-                        <Form.Control required type="text" />
+                        <Form.Control required value={place.title} type="text" />
                         <div className="row">
                             <div className="col-md-6">
                                 <Form.Label>From</Form.Label>
@@ -33,7 +39,8 @@ const Booking = (props) => {
                             </div>
                         </div>
                         <br/>
-                        <Link to={"/about/" + place.userId} className='button btn btn-warning'>Start Booking</Link>
+                        <button className='button btn btn-warning' onClick={handleAdd} type = 'submit'>Start Booking</button>
+                        
                     </form>
                 </div>
             </div>

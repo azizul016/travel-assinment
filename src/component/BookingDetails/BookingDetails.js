@@ -7,10 +7,6 @@ import About from '../About/About';
 const BookingDetails = () => {
     const {id} = useParams();
     const hotel = coxsbazar.filter(ht => ht.place === id);
-    // const newHotel = hotel.map(hotel => {
-    //     return hotel;
-    // })
-    // console.log('hotel',newHotel.id);
     return (
         <Container>
            <div className="row">

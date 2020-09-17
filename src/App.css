@@ -1,7 +1,14 @@
-.App {
-  text-align: center;
+.app {
+  min-height: 100vh;
+  height: 100%;
+  background: linear-gradient(
+      rgba(43, 36, 192, .3),
+      rgba(0, 0, 0, .6)
+    ), url('./Image/Rectangle 1.png');
+    background-repeat: no-repeat;
+    background-size: cover ;
+    background-position: center bottom;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;

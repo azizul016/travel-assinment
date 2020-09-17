@@ -20,6 +20,7 @@ export const details = createContext()
 function App() {
   const [data, setData] = useState(travel)
   return (
+    <div className='app'>
     <details.Provider value={[data, setData]}>
       <Router>
       <Header></Header>
@@ -42,6 +43,8 @@ function App() {
         </Switch>
       </Router>
     </details.Provider>
+    </div>
+
   );
 }
 
