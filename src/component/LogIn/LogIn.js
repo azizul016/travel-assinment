@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router-dom';
-import { initializeLoginFramework, handleGoogleSignIn, handleGoogleSignOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, handleGitHubSignIn, handleFbSignIn } from './loginManager';
+import { initializeLoginFramework, handleGoogleSignIn,  createUserWithEmailAndPassword, signInWithEmailAndPassword,  handleFbSignIn } from './loginManager';
 import './Login.css';
 import fbIcon from '../../Image/Icon/fb.png';
 import googleIcon from '../../Image/Icon/google.png';
@@ -58,6 +58,12 @@ function LogIn() {
     .then(res => {
       handleResponse(res, true);
     })
+    .error(error => {
+      const newUserInfo = {...user};
+      newUserInfo.error = error.message;
+      newUserInfo.success = false;
+      setUser(newUserInfo)
+    })
    }
 
    if(!newUser && user.email && user.password){
@@ -97,11 +103,11 @@ function LogIn() {
                     <div className="p-4  p-sm-5">
                         <img src={user.photoURL} alt="" />
                         <form className="loginForm" onSubmit={handleSubmit}>
-                            <div class="form-group">
-                                {newUser && <input onBlur={handleBlur} type="text" name="name" class="form-control" placeholder="First Name" required />}
-                                {newUser && <input onBlur={handleBlur} type="text" name="name" class="form-control" placeholder="Last Name" required />}
-                                <input onBlur={handleBlur} type="email" name="email" class="form-control" placeholder="Your Email" required />
-                                <input onBlur={handleBlur} name="password" type="password" class="form-control" placeholder="Password" required />
+                            <div className="form-group">
+                                {newUser && <input onBlur={handleBlur} type="text" name="name" className="form-control" placeholder="First Name" required />}
+                                {newUser && <input onBlur={handleBlur} type="text" name="name" className="form-control" placeholder="Last Name" required />}
+                                <input onBlur={handleBlur} type="email" name="email" className="form-control" placeholder="Your Email" required />
+                                <input onBlur={handleBlur} name="password" type="password" className="form-control" placeholder="Password" required />
                                 <input type="submit" className="form-control bg-warning" value="Login" />
                             </div>
 
@@ -119,9 +125,7 @@ function LogIn() {
                             <button>Continue with Google</button>
                         }
                     </div>
-
-                        <p className="text-danger">{user.error}</p>
-                        {/* <p className="text-success">{user.success} User {newUser ? 'created' : 'loggedin'} successfully</p> */}
+                    <p style={{color: 'red', fontSize: '20px'}}>{user.error}</p>
                     </div>
 
                 </div>

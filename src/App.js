@@ -14,6 +14,9 @@ import travel from './fakeData/travel';
 import BookingDetails from './component/BookingDetails/BookingDetails';
 import LogIn from './component/LogIn/LogIn';
 import PrivateRoute from './component/PrivateRoute/PrivateRoute';
+import Destination from './component/Destination/Destination';
+import Blog from './component/Blog/Blog';
+import Contact from './component/Contact/Contact';
 
 
 
@@ -29,6 +32,15 @@ function App() {
         <Switch>
           <Route path="/home">
             <Home />
+          </Route>
+          <Route path="/destination">
+            <Destination />
+          </Route>
+          <Route path="/blog">
+            <Blog />
+          </Route>
+          <Route path="contact">
+            <Contact />
           </Route>
           <Route path="/booking/:bookingId">
             <Booking />

@@ -6,7 +6,7 @@ import './Booking.css'
 
 const Booking = (props) => {
     const {bookingId} = useParams();
-    const place = travel.find(pd => pd.id === parseInt(bookingId))
+    const place = travel.find(place => place.id === parseInt(bookingId))
     const history = useHistory();
     const [form, setForm] = useState('');
     const handleAdd = () => {
