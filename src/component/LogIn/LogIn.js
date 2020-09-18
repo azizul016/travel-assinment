@@ -89,58 +89,47 @@ function LogIn() {
   }
 
 
-    return (
-        <div className="login">
-           
-            {
-                user.isSignedIn && <p>welcome {user.name}</p>
-            }
-            <div style={{textAlign:'center', marginLeft: '300px'}}>
-            <form style={{width:'600px'}} onSubmit={handleSubmit}>
-                <input onChange={()=> setNewUser(!newUser)} type="checkbox" name="newUser" id=""/>
-                <label htmlFor="newUser"><h2>Register</h2></label>
-                <br/>
-                <h2>{newUser ? 'Create an account' : 'Login'}</h2>
-                <br/>
-                {newUser && <input className="form-control" type="text" name="name" onBlur={handleBlur} placeholder="Enter Your First Name" required/>}
-                <br/>
-                {newUser && <input className="form-control" type="text" name="name" onBlur={handleBlur} placeholder="Enter Your Last Name" required/>}
-                <br/>
-                <input type="text" className="form-control" name="email" onBlur={handleBlur} required placeholder="Your Email Address"/>
-                <br/>
-                <input type="password" className="form-control" name="password" onBlur={handleBlur} required placeholder="Your Password" id=""/>
-                {newUser && <button className="btn btn-warning">Create an account</button>}
-               <div className="font-bottom">
-                    <div>
-                    <input type="checkbox" name="newUser" id=""/>
-                    <label htmlFor="newUser"><p><small style={{color: 'black'}}>Remember Me</small></p></label>
+  return (
+    <div className="pt-5 mt-5">
+        <div className="container-fluid">
+            <div className="row justify-content-center">
+                <div className="col-md-9 col-md-8 col-lg-6">
+                    <div className="p-4  p-sm-5">
+                        <img src={user.photoURL} alt="" />
+                        <form className="loginForm" onSubmit={handleSubmit}>
+                            <div class="form-group">
+                                {newUser && <input onBlur={handleBlur} type="text" name="name" class="form-control" placeholder="First Name" required />}
+                                {newUser && <input onBlur={handleBlur} type="text" name="name" class="form-control" placeholder="Last Name" required />}
+                                <input onBlur={handleBlur} type="email" name="email" class="form-control" placeholder="Your Email" required />
+                                <input onBlur={handleBlur} name="password" type="password" class="form-control" placeholder="Password" required />
+                                <input type="submit" className="form-control bg-warning" value="Login" />
+                            </div>
+
+                        </form>
+
+                        <input type="checkbox" onChange={() => setNewUser(!newUser)} name="newUser" />
+                        <label html for="newUser" className="ml-2 text-white">{newUser ? ' Already have Account' : ' Please Login'} </label>              
+                        <div  onClick={fbSignIn} className="duel-style">
+                        <img style={{width:'25px'}} src={fbIcon} alt=""/>
+                        <button>Continue with Facebook</button>
                     </div>
-                    <p className="text-warning">Forget password</p>
-               </div>
-                <input type="submit" className="form-control bg-warning" value={!newUser && "Login"}/>
-                <div className="font-bottom">
-                    <p>Don't have an account?</p>
-                    <input onChange={()=> setNewUser(!newUser)} type="checkbox" name="newUser" id=""/>
-                <label htmlFor="newUser"><p>Create an account</p></label>
+                    <div  onClick={googleSignIn} className="duel-style">
+                        <img style={{width:'25px'}} src={googleIcon} alt=""/>
+                        {
+                            <button>Continue with Google</button>
+                        }
+                    </div>
+
+                        <p className="text-danger">{user.error}</p>
+                        {/* <p className="text-success">{user.success} User {newUser ? 'created' : 'loggedin'} successfully</p> */}
+                    </div>
+
                 </div>
-            </form>
-            </div>
-            <p style={{color: 'red'}}>{user.error}</p>
-            {
-                user.success && <p style={{color: 'green'}}>User {newUser ? 'Created' : 'Logged In'} Successfully</p>
-            }
-            <div className="duel-style">
-                <img style={{width:'25px'}} src={fbIcon} alt=""/>
-                <button onClick={fbSignIn}>Continue with Facebook</button>
-            </div>
-            <div className="duel-style">
-                <img style={{width:'25px'}} src={googleIcon} alt=""/>
-                {
-                    <button onClick={googleSignIn}>Continue with Google</button>
-                }
             </div>
         </div>
-    );
+
+    </div>
+);
 };
 
 export default LogIn;
