@@ -7,13 +7,12 @@ import './Booking.css'
 const Booking = (props) => {
     const {bookingId} = useParams();
     const place = travel.find(pd => pd.id === parseInt(bookingId))
-    const history = useHistory()
-    const [form, setForm] = useState('')
+    const history = useHistory();
+    const [form, setForm] = useState('');
     const handleAdd = () => {
      form && history.push("/about/" + place.userId)
     }
-
-        
+    
     return (
         <Container>
             <div className="row">
@@ -24,7 +23,7 @@ const Booking = (props) => {
                 <div className="col-md-6">
                     <form className="formBg">
                         <Form.Label>Origin</Form.Label>
-                        <Form.Control value={form} onChange={(e)=> setForm(e.target.value)} required type="text" />
+                        <Form.Control  required type="text" />
                         <br/>
                         <Form.Label>Destination</Form.Label>
                         <Form.Control required value={place.title} type="text" />
@@ -35,7 +34,7 @@ const Booking = (props) => {
                             </div>
                             <div className="col-md-6">
                                 <Form.Label>To</Form.Label>
-                                <Form.Control required type="date" />
+                                <Form.Control value={form} onChange={(e)=> setForm(e.target.value)} required type="date" />
                             </div>
                         </div>
                         <br/>

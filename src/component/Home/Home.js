@@ -17,8 +17,8 @@ const Home = () => {
                 </div>
                 <div className="col-md-8">
                    <div className="row">
-                   {
-                    data.map(news => <News key={news.id} news={news}></News>)
+                    {
+                        data.map(news => <News key={news.id} news={news}></News>)
                     }
                    </div>
                 </div>
