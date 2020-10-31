@@ -1,4 +1,4 @@
-![image](https://user-images.githubusercontent.com/67515560/97528578-49fed580-19d8-11eb-8d77-55667c7d6355.png "Volunteer-Network")
+![image](https://user-images.githubusercontent.com/67515560/97784945-5e0b2880-1bcc-11eb-89b9-aa8b4dbfd153.png)
 
 # Travel Guru is an Travel Agency web app
 
